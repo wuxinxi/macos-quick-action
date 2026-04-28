@@ -28,9 +28,9 @@ struct GeneralView: View {
                 
                 // Status Section
                 VStack(alignment: .leading, spacing: 20) {
-                    StatusRow(title: String(localized: "Finder Extension"), subtitle: String(localized: "Core actions provider"), isActive: true)
-                    StatusRow(title: String(localized: "App Group"), subtitle: String(localized: "Data synchronization sink"), isActive: true)
-                    StatusRow(title: String(localized: "Accessibility"), subtitle: String(localized: "Required for advanced UI interaction"), isActive: false)
+                    StatusRow(title: "Finder Extension", subtitle: "Core actions provider", isActive: true)
+                    StatusRow(title: "App Group", subtitle: "Data synchronization sink", isActive: true)
+                    StatusRow(title: "Accessibility", subtitle: "Required for advanced UI interaction", isActive: false)
                 }
                 .padding(20)
                 .background(Color(NSColor.controlBackgroundColor).opacity(0.4))
@@ -59,8 +59,8 @@ struct GeneralView: View {
 }
 
 struct StatusRow: View {
-    let title: String
-    let subtitle: String
+    let title: LocalizedStringKey
+    let subtitle: LocalizedStringKey
     let isActive: Bool
     
     var body: some View {

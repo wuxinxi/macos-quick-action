@@ -4,6 +4,50 @@
     ".%@" : {
 
     },
+    "Accessibility" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "辅助功能"
+          }
+        }
+      }
+    },
+    "App Group" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "应用分组"
+          }
+        }
+      }
+    },
+    "App Group Active" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "应用分组已激活"
+          }
+        }
+      }
+    },
+    "App Specific Optimization" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特定应用优化"
+          }
+        }
+      }
+    },
     "Apps" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -11,6 +55,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "应用"
+          }
+        }
+      }
+    },
+    "Automated Launch" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自动启动"
           }
         }
       }
@@ -26,6 +81,17 @@
         }
       }
     },
+    "Core actions provider" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "核心功能提供方"
+          }
+        }
+      }
+    },
     "Create a new file and open it after creation" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -33,6 +99,50 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "创建文件后立即打开"
+          }
+        }
+      }
+    },
+    "Creation Settings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "创建设置"
+          }
+        }
+      }
+    },
+    "Custom configurations for Terminal, Sublime Text, and more are coming soon." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "针对 Terminal、Sublime Text 等应用的自定义配置即将导出。"
+          }
+        }
+      }
+    },
+    "Data synchronization sink" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "数据同步中心"
+          }
+        }
+      }
+    },
+    "Enhance your workflow with deep Finder integration." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通过深度 Finder 集成强化你的工作流。"
           }
         }
       }
@@ -48,6 +158,17 @@
         }
       }
     },
+    "Finder Extension" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finder 扩展"
+          }
+        }
+      }
+    },
     "General" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -59,13 +180,13 @@
         }
       }
     },
-    "Getting Started" : {
+    "Markdown" : {
       "extractionState" : "manual",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "快速入门"
+            "value" : "Markdown 笔记"
           }
         }
       }
@@ -114,8 +235,63 @@
         }
       }
     },
+    "Reload settings from disk" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "从磁盘重载设置"
+          }
+        }
+      }
+    },
+    "Required for advanced UI interaction" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "高级 UI 交互所需的权限"
+          }
+        }
+      }
+    },
+    "Select an item to continue" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请选择一个项目以继续"
+          }
+        }
+      }
+    },
     "Super Right Click" : {
 
+    },
+    "Sync" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "同步"
+          }
+        }
+      }
+    },
+    "Text" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "普通文本"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
