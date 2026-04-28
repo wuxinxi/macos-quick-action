@@ -16,24 +16,39 @@ class FinderSync: FIFinderSync {
         let menu = NSMenu(title: "")
         
         let copyPathItem = NSMenuItem(title: "Copy Path", action: #selector(copyPathAction(_:)), keyEquivalent: "")
-        copyPathItem.image = NSImage(systemSymbolName: "doc.on.doc", accessibilityDescription: nil)
+        copyPathItem.image = menuSymbol("doc.on.doc")
         menu.addItem(copyPathItem)
         
         let terminalItem = NSMenuItem(title: "Open Terminal Here", action: #selector(openTerminalAction(_:)), keyEquivalent: "")
-        terminalItem.image = NSImage(systemSymbolName: "terminal", accessibilityDescription: nil)
+        terminalItem.image = menuSymbol("terminal")
         menu.addItem(terminalItem)
         
         let sublimeItem = NSMenuItem(title: "Open with Sublime Text", action: #selector(openWithSublimeAction(_:)), keyEquivalent: "")
-        sublimeItem.image = NSImage(systemSymbolName: "curlybraces", accessibilityDescription: nil)
+        sublimeItem.image = menuSymbol("curlybraces")
         menu.addItem(sublimeItem)
         
         menu.addItem(NSMenuItem.separator())
         
         let newFileItem = NSMenuItem(title: "New File from Template", action: #selector(newFileAction(_:)), keyEquivalent: "")
-        newFileItem.image = NSImage(systemSymbolName: "doc.badge.plus", accessibilityDescription: nil)
+        newFileItem.image = menuSymbol("doc.badge.plus")
         menu.addItem(newFileItem)
 
         return menu
+    }
+
+    private func menuSymbol(_ name: String) -> NSImage? {
+        guard let symbol = NSImage(systemSymbolName: name, accessibilityDescription: nil) else {
+            return nil
+        }
+
+        let size = NSSize(width: 16, height: 16)
+        
+        // Brute force but highly reliable way to solve Dark/Light colors
+        let appearance = NSApp.effectiveAppearance
+        let isDark = appearance.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua
+        let color: NSColor = isDark ? .white : .black
+
+        return symbol.tinted(with: color, size: size)
     }
 
     // MARK: - Actions
@@ -63,11 +78,12 @@ class FinderSync: FIFinderSync {
         
         guard let finalURL = targetURL else { return }
         
-        // Since we are back in Sandbox, we MUST use Apple Events to securely bypass NSWorkspace limitations.
+        // Use the native 'open' command to launch Terminal at the specific path.
+        // This is much cleaner as it doesn't leave a 'cd' command in the terminal history.
         let scriptSource = """
         tell application "Terminal"
-            do script "cd '\(finalURL.path)'"
             activate
+            open POSIX file "\(finalURL.path)"
         end tell
         """
         
@@ -75,7 +91,8 @@ class FinderSync: FIFinderSync {
         if let script = NSAppleScript(source: scriptSource) {
             script.executeAndReturnError(&errorDict)
             if let error = errorDict {
-                NSLog("QuickAction: AppleScript Terminal error: %@", error)
+                // Fallback: If 'open' fails, we might need the legacy method
+                NSLog("QuickAction: AppleScript Terminal open error: %@", error)
             }
         }
     }
@@ -86,22 +103,27 @@ class FinderSync: FIFinderSync {
         let sublimeBundleIDs = ["com.sublimetext.4", "com.sublimetext.3"]
         let sublimeName = "Sublime Text"
         
-        var found = false
+        var foundBundleID: String?
         for bundleID in sublimeBundleIDs {
             if NSWorkspace.shared.urlForApplication(withBundleIdentifier: bundleID) != nil {
-                found = true
+                foundBundleID = bundleID
                 break
             }
         }
         
-        guard found else {
+        guard let bundleID = foundBundleID else {
             NSLog("QuickAction: Sublime Text not found.")
             return
         }
         
-        let appleScriptPaths = items.map { "POSIX file \"\($0.path)\"" }.joined(separator: ", ")
+        // Escape double quotes in paths for AppleScript strings
+        let appleScriptPaths = items.map { url in
+            let escapedPath = url.path.replacingOccurrences(of: "\"", with: "\\\"")
+            return "POSIX file \"\(escapedPath)\""
+        }.joined(separator: ", ")
+        
         let scriptSource = """
-        tell application "\(sublimeName)"
+        tell application id "\(bundleID)"
             activate
             open {\(appleScriptPaths)}
         end tell
@@ -132,5 +154,24 @@ class FinderSync: FIFinderSync {
         
         // Direct file creation, no security bookmarks needed!
         fileManager.createFile(atPath: newFileURL.path, contents: "".data(using: .utf8), attributes: nil)
+    }
+}
+
+// MARK: - Extensions
+
+extension NSImage {
+    func tinted(with color: NSColor, size: NSSize) -> NSImage {
+        let image = NSImage(size: size)
+        image.lockFocus()
+        
+        let rect = NSRect(origin: .zero, size: size)
+        self.draw(in: rect, from: .zero, operation: .sourceOver, fraction: 1.0)
+        
+        color.set()
+        rect.fill(using: .sourceAtop)
+        
+        image.unlockFocus()
+        image.isTemplate = false
+        return image
     }
 }
