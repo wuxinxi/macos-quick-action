@@ -1,0 +1,87 @@
+import SwiftUI
+
+struct GeneralView: View {
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 30) {
+                // Hero Section
+                VStack(spacing: 16) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(LinearGradient(colors: [.accentColor, .blue], startPoint: .topLeading, endPoint: .bottomTrailing))
+                            .frame(width: 80, height: 80)
+                            .shadow(color: Color.accentColor.opacity(0.3), radius: 10, x: 0, y: 5)
+                        
+                        Image(systemName: "cursorarrow.and.square.on.square.dashed")
+                            .font(.system(size: 40))
+                            .foregroundColor(.white)
+                    }
+                    
+                    Text("Super Right Click")
+                        .font(.system(size: 28, weight: .bold))
+                    
+                    Text(String(localized: "Enhance your workflow with deep Finder integration."))
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+                .padding(.top, 40)
+                
+                // Status Section
+                VStack(alignment: .leading, spacing: 20) {
+                    StatusRow(title: String(localized: "Finder Extension"), subtitle: String(localized: "Core actions provider"), isActive: true)
+                    StatusRow(title: String(localized: "App Group"), subtitle: String(localized: "Data synchronization sink"), isActive: true)
+                    StatusRow(title: String(localized: "Accessibility"), subtitle: String(localized: "Required for advanced UI interaction"), isActive: false)
+                }
+                .padding(20)
+                .background(Color(NSColor.controlBackgroundColor).opacity(0.4))
+                .cornerRadius(12)
+                .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.primary.opacity(0.1), lineWidth: 1))
+                
+                Button(action: openExtensionSettings) {
+                    Text(String(localized: "Open Extension Settings"))
+                        .fontWeight(.semibold)
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+                
+                Spacer()
+            }
+            .padding(30)
+        }
+    }
+    
+    private func openExtensionSettings() {
+        if let url = URL(string: "x-apple.systempreferences:com.apple.preferences.extensions") {
+            NSWorkspace.shared.open(url)
+        }
+    }
+}
+
+struct StatusRow: View {
+    let title: String
+    let subtitle: String
+    let isActive: Bool
+    
+    var body: some View {
+        HStack(spacing: 15) {
+            Circle()
+                .fill(isActive ? Color.green : Color.orange)
+                .frame(width: 8, height: 8)
+                .shadow(color: (isActive ? Color.green : Color.orange).opacity(0.5), radius: 3)
+            
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title)
+                    .font(.system(size: 13, weight: .medium))
+                Text(subtitle)
+                    .font(.system(size: 11))
+                    .foregroundColor(.secondary)
+            }
+            
+            Spacer()
+            
+            Image(systemName: isActive ? "checkmark.circle.fill" : "exclamationmark.circle.fill")
+                .foregroundColor(isActive ? .green : .orange)
+        }
+    }
+}

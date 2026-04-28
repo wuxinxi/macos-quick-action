@@ -15,23 +15,39 @@ class FinderSync: FIFinderSync {
     override func menu(for menuKind: FIMenuKind) -> NSMenu {
         let menu = NSMenu(title: "")
         
-        let copyPathItem = NSMenuItem(title: "Copy Path", action: #selector(copyPathAction(_:)), keyEquivalent: "")
+        let copyPathItem = NSMenuItem(title: NSLocalizedString("Copy Path", comment: ""), action: #selector(copyPathAction(_:)), keyEquivalent: "")
         copyPathItem.image = menuSymbol("doc.on.doc")
         menu.addItem(copyPathItem)
         
-        let terminalItem = NSMenuItem(title: "Open Terminal Here", action: #selector(openTerminalAction(_:)), keyEquivalent: "")
+        let terminalItem = NSMenuItem(title: NSLocalizedString("Open Terminal Here", comment: ""), action: #selector(openTerminalAction(_:)), keyEquivalent: "")
         terminalItem.image = menuSymbol("terminal")
         menu.addItem(terminalItem)
         
-        let sublimeItem = NSMenuItem(title: "Open with Sublime Text", action: #selector(openWithSublimeAction(_:)), keyEquivalent: "")
+        let sublimeItem = NSMenuItem(title: NSLocalizedString("Open with Sublime Text", comment: ""), action: #selector(openWithSublimeAction(_:)), keyEquivalent: "")
         sublimeItem.image = menuSymbol("curlybraces")
         menu.addItem(sublimeItem)
         
         menu.addItem(NSMenuItem.separator())
         
-        let newFileItem = NSMenuItem(title: "New File from Template", action: #selector(newFileAction(_:)), keyEquivalent: "")
-        newFileItem.image = menuSymbol("doc.badge.plus")
-        menu.addItem(newFileItem)
+        // Dynamic "New File" Sub-menu
+        let manager = TemplateManager()
+        let enabledTemplates = manager.templates.filter { $0.isEnabled }
+        
+        if !enabledTemplates.isEmpty {
+            let newFileRootItem = NSMenuItem(title: NSLocalizedString("New File", comment: ""), action: nil, keyEquivalent: "")
+            newFileRootItem.image = menuSymbol("doc.badge.plus")
+            
+            let subMenu = NSMenu(title: "")
+            for (index, template) in enabledTemplates.enumerated() {
+                let item = NSMenuItem(title: template.localizedName, action: #selector(newFileAction(_:)), keyEquivalent: "")
+                item.image = menuSymbol(template.iconName)
+                item.tag = index // Use tag as reliable index
+                subMenu.addItem(item)
+            }
+            
+            newFileRootItem.submenu = subMenu
+            menu.addItem(newFileRootItem)
+        }
 
         return menu
     }
@@ -139,11 +155,41 @@ class FinderSync: FIFinderSync {
     }
     
     @IBAction func newFileAction(_ sender: AnyObject?) {
-        guard let targetURL = FIFinderSyncController.default().targetedURL() else { return }
+        // Fallback logic for targetedURL
+        var folderURL = FIFinderSyncController.default().targetedURL()
+        
+        if folderURL == nil {
+            // If targetedURL is nil (e.g. clicking on a selection), try to get the parent of selected items
+            if let selected = FIFinderSyncController.default().selectedItemURLs()?.first {
+                var isDir: ObjCBool = false
+                if FileManager.default.fileExists(atPath: selected.path, isDirectory: &isDir), isDir.boolValue {
+                    folderURL = selected
+                } else {
+                    folderURL = selected.deletingLastPathComponent()
+                }
+            }
+        }
+        
+        guard let targetURL = folderURL else {
+            NSLog("QuickAction: Failed to determine target directory for New File.")
+            return
+        }
+        
+        // Resolve template info using the reliable 'tag'
+        let manager = TemplateManager()
+        let enabledTemplates = manager.templates.filter { $0.isEnabled }
+        let tag = (sender as? NSMenuItem)?.tag ?? -1
+        
+        var baseName = "NewFile"
+        var ext = "txt"
+        
+        if tag >= 0 && tag < enabledTemplates.count {
+            let template = enabledTemplates[tag]
+            baseName = template.localizedName
+            ext = template.extensionName
+        }
         
         let fileManager = FileManager.default
-        let baseName = "NewFile"
-        let ext = "txt"
         var counter = 0
         var newFileURL = targetURL.appendingPathComponent("\(baseName).\(ext)")
         
@@ -152,8 +198,19 @@ class FinderSync: FIFinderSync {
             newFileURL = targetURL.appendingPathComponent("\(baseName) \(counter).\(ext)")
         }
         
-        // Direct file creation, no security bookmarks needed!
-        fileManager.createFile(atPath: newFileURL.path, contents: "".data(using: .utf8), attributes: nil)
+        do {
+            // Create the file
+            try "".write(to: newFileURL, atomically: true, encoding: .utf8)
+            NSLog("QuickAction: Successfully created file at %@", newFileURL.path)
+            
+            // Check if "Open after create" is enabled
+            let manager = TemplateManager()
+            if manager.openAfterCreate {
+                NSWorkspace.shared.open(newFileURL)
+            }
+        } catch {
+            NSLog("QuickAction: Failed to create file: %@", error.localizedDescription)
+        }
     }
 }
 

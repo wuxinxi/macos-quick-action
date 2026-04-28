@@ -1,6 +1,7 @@
 name: QuickAction
 options:
   bundleIdPrefix: cn.xxstudy
+  createSharedSchemes: true
   deploymentTarget:
     macOS: "13.0"
 targets:
@@ -28,6 +29,8 @@ targets:
     platform: macOS
     sources:
       - path: FinderSyncExt
+      - path: QuickAction/Models/FileTemplate.swift
+      - path: QuickAction/Managers/TemplateManager.swift
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: cn.xxstudy.QuickAction.FinderSyncExt
@@ -60,3 +63,17 @@ targets:
       - path: QuickActionUITests
     dependencies:
       - target: QuickAction
+
+schemes:
+  QuickAction:
+    build:
+      targets:
+        QuickAction: all
+    run:
+      target: QuickAction
+  FinderSyncExt:
+    build:
+      targets:
+        FinderSyncExt: all
+    run:
+      target: FinderSyncExt
