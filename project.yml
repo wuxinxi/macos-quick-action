@@ -1,0 +1,62 @@
+name: QuickAction
+options:
+  bundleIdPrefix: cn.xxstudy
+  deploymentTarget:
+    macOS: "13.0"
+targets:
+  QuickAction:
+    type: application
+    platform: macOS
+    sources:
+      - path: QuickAction
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: cn.xxstudy.QuickAction
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        MACOSX_DEPLOYMENT_TARGET: "13.0"
+        CODE_SIGN_ENTITLEMENTS: QuickAction/QuickAction.entitlements
+        CODE_SIGN_IDENTITY: "Apple Development"
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: ""
+        INFOPLIST_KEY_NSAppleEventsUsageDescription: "QuickAction needs this permission to open files in other applications."
+    dependencies:
+      - target: FinderSyncExt
+
+  FinderSyncExt:
+    type: app-extension
+    platform: macOS
+    sources:
+      - path: FinderSyncExt
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: cn.xxstudy.QuickAction.FinderSyncExt
+        SKIP_INSTALL: YES
+        MACOSX_DEPLOYMENT_TARGET: "13.0"
+        CODE_SIGN_ENTITLEMENTS: FinderSyncExt/FinderSyncExt.entitlements
+        CODE_SIGN_IDENTITY: "Apple Development"
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: ""
+    info:
+      path: FinderSyncExt/Info.plist
+      properties:
+        NSAppleEventsUsageDescription: "QuickAction needs this permission to open files in other applications like Terminal or Sublime Text."
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.FinderSync
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).FinderSync
+
+  QuickActionTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: QuickActionTests
+    dependencies:
+      - target: QuickAction
+
+  QuickActionUITests:
+    type: bundle.ui-testing
+    platform: macOS
+    sources:
+      - path: QuickActionUITests
+    dependencies:
+      - target: QuickAction

@@ -1,0 +1,639 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0F4C712222F9B030EA7B0686 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B8BC673DD6B8ACBA19AF3A /* ContentView.swift */; };
+		56693641710178BE01F767C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F3D7938C1698F4F70CBD915 /* Assets.xcassets */; };
+		6D653F81070B4CB9576E5806 /* QuickActionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA88A97182B573B9E65D2303 /* QuickActionUITestsLaunchTests.swift */; };
+		790006DA2EEE7246227581FB /* FinderSyncExt.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A5914F4FECED1DEAAC540A9F /* FinderSyncExt.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7B329151FA1DB311ACE2D1AE /* QuickActionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60F3F1BF05F5A1C37328499 /* QuickActionApp.swift */; };
+		BBC564428BF6BE52F9F3963A /* QuickActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCC97395671FD9FD85F2063 /* QuickActionTests.swift */; };
+		D714C785D28254DB33333272 /* QuickActionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937588D11C3BC64B55116528 /* QuickActionUITests.swift */; };
+		E4A508755B547BEEA9B48E78 /* FinderSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44FECA3654A3420B5AE82B0 /* FinderSync.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BF9DCFC0C2214E608A0F36FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4E03CE6FEBD7D82B58111A2D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 95FC86A8BCCC1BC95A05E1FB;
+			remoteInfo = QuickAction;
+		};
+		DBDD81B5CCEAB8206FE47FD2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4E03CE6FEBD7D82B58111A2D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 95FC86A8BCCC1BC95A05E1FB;
+			remoteInfo = QuickAction;
+		};
+		E5C54A782CCEC884EA9008F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4E03CE6FEBD7D82B58111A2D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6552F53C13FB0C0236EC8AFE;
+			remoteInfo = FinderSyncExt;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D947A86437DF247F3086A1BB /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				790006DA2EEE7246227581FB /* FinderSyncExt.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		012108A9799F9C019BFDA3C8 /* QuickActionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickActionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5260FE1DB3003F9F7E064F00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		535EF11A451DF500A0A9CEF2 /* FinderSyncExt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FinderSyncExt.entitlements; sourceTree = "<group>"; };
+		6F3D7938C1698F4F70CBD915 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		722873F4C3830F51A7B4976F /* QuickActionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickActionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		937588D11C3BC64B55116528 /* QuickActionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionUITests.swift; sourceTree = "<group>"; };
+		94E94BA2637D36ED27426FB4 /* QuickAction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickAction.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5914F4FECED1DEAAC540A9F /* FinderSyncExt.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FinderSyncExt.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A60F3F1BF05F5A1C37328499 /* QuickActionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionApp.swift; sourceTree = "<group>"; };
+		B44FECA3654A3420B5AE82B0 /* FinderSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderSync.swift; sourceTree = "<group>"; };
+		C0B8BC673DD6B8ACBA19AF3A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C5E9AC74A93510B32C420974 /* QuickAction.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QuickAction.entitlements; sourceTree = "<group>"; };
+		DA88A97182B573B9E65D2303 /* QuickActionUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FCCC97395671FD9FD85F2063 /* QuickActionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		17D445D82E73DD5923D0981F /* FinderSyncExt */ = {
+			isa = PBXGroup;
+			children = (
+				B44FECA3654A3420B5AE82B0 /* FinderSync.swift */,
+				535EF11A451DF500A0A9CEF2 /* FinderSyncExt.entitlements */,
+				5260FE1DB3003F9F7E064F00 /* Info.plist */,
+			);
+			path = FinderSyncExt;
+			sourceTree = "<group>";
+		};
+		3B96998CF462CCB7BB26C7E0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A5914F4FECED1DEAAC540A9F /* FinderSyncExt.appex */,
+				94E94BA2637D36ED27426FB4 /* QuickAction.app */,
+				012108A9799F9C019BFDA3C8 /* QuickActionTests.xctest */,
+				722873F4C3830F51A7B4976F /* QuickActionUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		69CD6E0D65C2BD9B1423B3EC /* QuickActionUITests */ = {
+			isa = PBXGroup;
+			children = (
+				937588D11C3BC64B55116528 /* QuickActionUITests.swift */,
+				DA88A97182B573B9E65D2303 /* QuickActionUITestsLaunchTests.swift */,
+			);
+			path = QuickActionUITests;
+			sourceTree = "<group>";
+		};
+		6AA383076781C04AD35D87D4 /* QuickActionTests */ = {
+			isa = PBXGroup;
+			children = (
+				FCCC97395671FD9FD85F2063 /* QuickActionTests.swift */,
+			);
+			path = QuickActionTests;
+			sourceTree = "<group>";
+		};
+		92805AF979134AE601702721 /* QuickAction */ = {
+			isa = PBXGroup;
+			children = (
+				6F3D7938C1698F4F70CBD915 /* Assets.xcassets */,
+				C0B8BC673DD6B8ACBA19AF3A /* ContentView.swift */,
+				C5E9AC74A93510B32C420974 /* QuickAction.entitlements */,
+				A60F3F1BF05F5A1C37328499 /* QuickActionApp.swift */,
+			);
+			path = QuickAction;
+			sourceTree = "<group>";
+		};
+		D8280C23C033CFF92604EBC2 = {
+			isa = PBXGroup;
+			children = (
+				17D445D82E73DD5923D0981F /* FinderSyncExt */,
+				92805AF979134AE601702721 /* QuickAction */,
+				6AA383076781C04AD35D87D4 /* QuickActionTests */,
+				69CD6E0D65C2BD9B1423B3EC /* QuickActionUITests */,
+				3B96998CF462CCB7BB26C7E0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5EE3F3F176AAA9FD10CB38AC /* QuickActionUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49240E380A639CBF4F29C992 /* Build configuration list for PBXNativeTarget "QuickActionUITests" */;
+			buildPhases = (
+				B674EFC1000413E0BDFCE915 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				29CE541CA59694F4F4352970 /* PBXTargetDependency */,
+			);
+			name = QuickActionUITests;
+			packageProductDependencies = (
+			);
+			productName = QuickActionUITests;
+			productReference = 722873F4C3830F51A7B4976F /* QuickActionUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		6552F53C13FB0C0236EC8AFE /* FinderSyncExt */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3627BB5B903A0750CB8A8E94 /* Build configuration list for PBXNativeTarget "FinderSyncExt" */;
+			buildPhases = (
+				47B095DD76579AD129853878 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FinderSyncExt;
+			packageProductDependencies = (
+			);
+			productName = FinderSyncExt;
+			productReference = A5914F4FECED1DEAAC540A9F /* FinderSyncExt.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		73C4BF27191D7A9A9271F73B /* QuickActionTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0D74AA89A8418D1E6AED0E1 /* Build configuration list for PBXNativeTarget "QuickActionTests" */;
+			buildPhases = (
+				7226AE6E75067B4CA4231BA7 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CAD3D47B5084C535AD3EDCC8 /* PBXTargetDependency */,
+			);
+			name = QuickActionTests;
+			packageProductDependencies = (
+			);
+			productName = QuickActionTests;
+			productReference = 012108A9799F9C019BFDA3C8 /* QuickActionTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		95FC86A8BCCC1BC95A05E1FB /* QuickAction */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D73B4D40B4C8CCF3B8A16B3 /* Build configuration list for PBXNativeTarget "QuickAction" */;
+			buildPhases = (
+				A7B0983E2396E87D434AA0DC /* Sources */,
+				3E6AC4E1311B068CC3B88E1E /* Resources */,
+				D947A86437DF247F3086A1BB /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4FAF4D4CA46B5EE01A00FFD5 /* PBXTargetDependency */,
+			);
+			name = QuickAction;
+			packageProductDependencies = (
+			);
+			productName = QuickAction;
+			productReference = 94E94BA2637D36ED27426FB4 /* QuickAction.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4E03CE6FEBD7D82B58111A2D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					5EE3F3F176AAA9FD10CB38AC = {
+						TestTargetID = 95FC86A8BCCC1BC95A05E1FB;
+					};
+					6552F53C13FB0C0236EC8AFE = {
+						ProvisioningStyle = Automatic;
+					};
+					95FC86A8BCCC1BC95A05E1FB = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 8F0118015962E860577745DA /* Build configuration list for PBXProject "QuickAction" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = D8280C23C033CFF92604EBC2;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 3B96998CF462CCB7BB26C7E0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6552F53C13FB0C0236EC8AFE /* FinderSyncExt */,
+				95FC86A8BCCC1BC95A05E1FB /* QuickAction */,
+				73C4BF27191D7A9A9271F73B /* QuickActionTests */,
+				5EE3F3F176AAA9FD10CB38AC /* QuickActionUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3E6AC4E1311B068CC3B88E1E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56693641710178BE01F767C5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		47B095DD76579AD129853878 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4A508755B547BEEA9B48E78 /* FinderSync.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7226AE6E75067B4CA4231BA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBC564428BF6BE52F9F3963A /* QuickActionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7B0983E2396E87D434AA0DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F4C712222F9B030EA7B0686 /* ContentView.swift in Sources */,
+				7B329151FA1DB311ACE2D1AE /* QuickActionApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B674EFC1000413E0BDFCE915 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D714C785D28254DB33333272 /* QuickActionUITests.swift in Sources */,
+				6D653F81070B4CB9576E5806 /* QuickActionUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		29CE541CA59694F4F4352970 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 95FC86A8BCCC1BC95A05E1FB /* QuickAction */;
+			targetProxy = BF9DCFC0C2214E608A0F36FF /* PBXContainerItemProxy */;
+		};
+		4FAF4D4CA46B5EE01A00FFD5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6552F53C13FB0C0236EC8AFE /* FinderSyncExt */;
+			targetProxy = E5C54A782CCEC884EA9008F1 /* PBXContainerItemProxy */;
+		};
+		CAD3D47B5084C535AD3EDCC8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 95FC86A8BCCC1BC95A05E1FB /* QuickAction */;
+			targetProxy = DBDD81B5CCEAB8206FE47FD2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1057654171DEA1B56E84AA3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cn.xxstudy.QuickActionUITests;
+				SDKROOT = macosx;
+				TEST_TARGET_NAME = QuickAction;
+			};
+			name = Debug;
+		};
+		22506F3C2FE6E6A56BC366AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		40A8EB2F6FE3EE4875CF643F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cn.xxstudy.QuickActionTests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuickAction.app/Contents/MacOS/QuickAction";
+			};
+			name = Debug;
+		};
+		4D300E8A4CA83B4B9BF240A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cn.xxstudy.QuickActionTests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuickAction.app/Contents/MacOS/QuickAction";
+			};
+			name = Release;
+		};
+		76AED4ECC2C950AD9F65896B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = QuickAction/QuickAction.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ND9Z23634S;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "QuickAction needs this permission to open files in other applications.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.xxstudy.QuickAction;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		7A933A3A1848D87D169BE04B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cn.xxstudy.QuickActionUITests;
+				SDKROOT = macosx;
+				TEST_TARGET_NAME = QuickAction;
+			};
+			name = Release;
+		};
+		958C9968C975AEEE88DDCDEE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A4B9CE8B58EC1F1B7B8B8FA1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = FinderSyncExt/FinderSyncExt.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ND9Z23634S;
+				INFOPLIST_FILE = FinderSyncExt/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.xxstudy.QuickAction.FinderSyncExt;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		DE50831404D8E158062535B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = QuickAction/QuickAction.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ND9Z23634S;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "QuickAction needs this permission to open files in other applications.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.xxstudy.QuickAction;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		E76BCF23E0FFA17DB2B18495 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = FinderSyncExt/FinderSyncExt.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ND9Z23634S;
+				INFOPLIST_FILE = FinderSyncExt/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.xxstudy.QuickAction.FinderSyncExt;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3627BB5B903A0750CB8A8E94 /* Build configuration list for PBXNativeTarget "FinderSyncExt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E76BCF23E0FFA17DB2B18495 /* Debug */,
+				A4B9CE8B58EC1F1B7B8B8FA1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		49240E380A639CBF4F29C992 /* Build configuration list for PBXNativeTarget "QuickActionUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1057654171DEA1B56E84AA3F /* Debug */,
+				7A933A3A1848D87D169BE04B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		5D73B4D40B4C8CCF3B8A16B3 /* Build configuration list for PBXNativeTarget "QuickAction" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE50831404D8E158062535B0 /* Debug */,
+				76AED4ECC2C950AD9F65896B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8F0118015962E860577745DA /* Build configuration list for PBXProject "QuickAction" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				958C9968C975AEEE88DDCDEE /* Debug */,
+				22506F3C2FE6E6A56BC366AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F0D74AA89A8418D1E6AED0E1 /* Build configuration list for PBXNativeTarget "QuickActionTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40A8EB2F6FE3EE4875CF643F /* Debug */,
+				4D300E8A4CA83B4B9BF240A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4E03CE6FEBD7D82B58111A2D /* Project object */;
+}
