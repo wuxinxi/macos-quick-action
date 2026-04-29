@@ -8,7 +8,6 @@ class FinderSync: FIFinderSync {
 
     override init() {
         super.init()
-        NSLog("FinderSync() launched from %@", Bundle.main.bundlePath as NSString)
         FIFinderSyncController.default().directoryURLs = [self.myFolderURL]
     }
 
@@ -32,19 +31,19 @@ class FinderSync: FIFinderSync {
         // Dynamic "New File" Sub-menu
         let manager = TemplateManager()
         let enabledTemplates = manager.templates.filter { $0.isEnabled }
-        
+
         if !enabledTemplates.isEmpty {
             let newFileRootItem = NSMenuItem(title: NSLocalizedString("New File", comment: ""), action: nil, keyEquivalent: "")
             newFileRootItem.image = menuSymbol("doc.badge.plus")
-            
+
             let subMenu = NSMenu(title: "")
             for (index, template) in enabledTemplates.enumerated() {
                 let item = NSMenuItem(title: template.localizedName, action: #selector(newFileAction(_:)), keyEquivalent: "")
                 item.image = menuSymbol(template.iconName)
-                item.tag = index // Use tag as reliable index
+                item.tag = index
                 subMenu.addItem(item)
             }
-            
+
             newFileRootItem.submenu = subMenu
             menu.addItem(newFileRootItem)
         }
@@ -106,10 +105,7 @@ class FinderSync: FIFinderSync {
         var errorDict: NSDictionary?
         if let script = NSAppleScript(source: scriptSource) {
             script.executeAndReturnError(&errorDict)
-            if let error = errorDict {
-                // Fallback: If 'open' fails, we might need the legacy method
-                NSLog("QuickAction: AppleScript Terminal open error: %@", error)
-            }
+            if let error = errorDict { }
         }
     }
 
@@ -127,10 +123,7 @@ class FinderSync: FIFinderSync {
             }
         }
         
-        guard let bundleID = foundBundleID else {
-            NSLog("QuickAction: Sublime Text not found.")
-            return
-        }
+        guard let bundleID = foundBundleID else { return }
         
         // Escape double quotes in paths for AppleScript strings
         let appleScriptPaths = items.map { url in
@@ -148,18 +141,15 @@ class FinderSync: FIFinderSync {
         var errorDict: NSDictionary?
         if let script = NSAppleScript(source: scriptSource) {
             script.executeAndReturnError(&errorDict)
-            if let error = errorDict {
-                NSLog("QuickAction: AppleScript error: %@", error)
-            }
+            if let error = errorDict { }
         }
     }
     
     @IBAction func newFileAction(_ sender: AnyObject?) {
-        // Fallback logic for targetedURL
+        // Determine target folder
         var folderURL = FIFinderSyncController.default().targetedURL()
-        
+
         if folderURL == nil {
-            // If targetedURL is nil (e.g. clicking on a selection), try to get the parent of selected items
             if let selected = FIFinderSyncController.default().selectedItemURLs()?.first {
                 var isDir: ObjCBool = false
                 if FileManager.default.fileExists(atPath: selected.path, isDirectory: &isDir), isDir.boolValue {
@@ -169,48 +159,36 @@ class FinderSync: FIFinderSync {
                 }
             }
         }
-        
-        guard let targetURL = folderURL else {
-            NSLog("QuickAction: Failed to determine target directory for New File.")
-            return
-        }
-        
-        // Resolve template info using the reliable 'tag'
+
+        guard let targetURL = folderURL else { return }
+
+        // Resolve template by tag
         let manager = TemplateManager()
         let enabledTemplates = manager.templates.filter { $0.isEnabled }
         let tag = (sender as? NSMenuItem)?.tag ?? -1
-        
-        var baseName = "NewFile"
+        var baseName = "Untitled"
         var ext = "txt"
-        
+
         if tag >= 0 && tag < enabledTemplates.count {
             let template = enabledTemplates[tag]
             baseName = template.localizedName
             ext = template.extensionName
         }
-        
+
+        // Create file directly
         let fileManager = FileManager.default
         var counter = 0
-        var newFileURL = targetURL.appendingPathComponent("\(baseName).\(ext)")
-        
-        while fileManager.fileExists(atPath: newFileURL.path) {
+        var fileURL = targetURL.appendingPathComponent("\(baseName).\(ext)")
+
+        while fileManager.fileExists(atPath: fileURL.path) {
             counter += 1
-            newFileURL = targetURL.appendingPathComponent("\(baseName) \(counter).\(ext)")
+            fileURL = targetURL.appendingPathComponent("\(baseName) \(counter).\(ext)")
         }
-        
+
         do {
-            // Create the file
-            try "".write(to: newFileURL, atomically: true, encoding: .utf8)
-            NSLog("QuickAction: Successfully created file at %@", newFileURL.path)
-            
-            // Check if "Open after create" is enabled
-            let manager = TemplateManager()
-            if manager.openAfterCreate {
-                NSWorkspace.shared.open(newFileURL)
-            }
-        } catch {
-            NSLog("QuickAction: Failed to create file: %@", error.localizedDescription)
-        }
+            try "".write(to: fileURL, atomically: true, encoding: .utf8)
+            NSWorkspace.shared.activateFileViewerSelecting([fileURL])
+        } catch { }
     }
 }
 
