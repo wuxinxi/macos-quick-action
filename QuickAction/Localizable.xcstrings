@@ -7,9 +7,6 @@
     ".%@" : {
 
     },
-    "App Group Active" : {
-      
-    },
     "common.language.en" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -213,6 +210,9 @@
           }
         }
       }
+    },
+    "nav.footer.status_active" : {
+
     },
     "nav.tab.apps" : {
       "extractionState" : "manual",
