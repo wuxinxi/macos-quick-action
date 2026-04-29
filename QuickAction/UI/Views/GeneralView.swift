@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct GeneralView: View {
+    @ObservedObject var manager: TemplateManager
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 30) {
@@ -17,20 +19,21 @@ struct GeneralView: View {
                             .foregroundColor(.white)
                     }
                     
-                    Text("Super Right Click")
+                    Text("dashboard.hero.title")
                         .font(.system(size: 28, weight: .bold))
                     
-                    Text(String(localized: "Enhance your workflow with deep Finder integration."))
+                    Text("dashboard.hero.subtitle")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
                 }
                 .padding(.top, 40)
                 
                 // Status Section
                 VStack(alignment: .leading, spacing: 20) {
-                    StatusRow(title: "Finder Extension", subtitle: "Core actions provider", isActive: true)
-                    StatusRow(title: "App Group", subtitle: "Data synchronization sink", isActive: true)
-                    StatusRow(title: "Accessibility", subtitle: "Required for advanced UI interaction", isActive: false)
+                    StatusRow(title: "dashboard.status.finder_ext.title", subtitle: "dashboard.status.finder_ext.subtitle", isActive: true)
+                    StatusRow(title: "dashboard.status.app_group.title", subtitle: "dashboard.status.app_group.subtitle", isActive: true)
+                    StatusRow(title: "dashboard.status.accessibility.title", subtitle: "dashboard.status.accessibility.subtitle", isActive: false)
                 }
                 .padding(20)
                 .background(Color(NSColor.controlBackgroundColor).opacity(0.4))
@@ -38,7 +41,7 @@ struct GeneralView: View {
                 .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.primary.opacity(0.1), lineWidth: 1))
                 
                 Button(action: openExtensionSettings) {
-                    Text(String(localized: "Open Extension Settings"))
+                    Text("dashboard.button.open_settings")
                         .fontWeight(.semibold)
                         .frame(maxWidth: .infinity)
                 }
@@ -59,8 +62,8 @@ struct GeneralView: View {
 }
 
 struct StatusRow: View {
-    let title: LocalizedStringKey
-    let subtitle: LocalizedStringKey
+    let title: String
+    let subtitle: String
     let isActive: Bool
     
     var body: some View {
@@ -71,9 +74,9 @@ struct StatusRow: View {
                 .shadow(color: (isActive ? Color.green : Color.orange).opacity(0.5), radius: 3)
             
             VStack(alignment: .leading, spacing: 2) {
-                Text(title)
+                Text(LocalizedStringKey(title))
                     .font(.system(size: 13, weight: .medium))
-                Text(subtitle)
+                Text(LocalizedStringKey(subtitle))
                     .font(.system(size: 11))
                     .foregroundColor(.secondary)
             }

@@ -10,6 +10,7 @@ targets:
     platform: macOS
     sources:
       - path: QuickAction
+      - path: QuickAction/UI/Views/SettingsView.swift
     settings:
       base:
         GENERATE_INFOPLIST_FILE: YES

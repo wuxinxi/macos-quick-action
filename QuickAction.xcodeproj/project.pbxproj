@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0730A20581B543A622D2D7B3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9A296EEF686A7C62844BE1 /* SettingsView.swift */; };
 		1FC9E534462AA23FF48FEE38 /* TemplateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589DCF94CF6D12ECA2B8DF54 /* TemplateManager.swift */; };
 		2174A6D7E8B41AAAC0871A83 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 7D26D8B32A89E3F3A4671C42 /* Localizable.xcstrings */; };
 		400DA44B48691F19C3CA0D9F /* FileTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDC83FDF68C7A7E20A994FE /* FileTemplate.swift */; };
@@ -65,6 +66,7 @@
 /* Begin PBXFileReference section */
 		012108A9799F9C019BFDA3C8 /* QuickActionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickActionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		028FA7C56C0CF16021A661A4 /* NewFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFileView.swift; sourceTree = "<group>"; };
+		0A9A296EEF686A7C62844BE1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2F9B1FB0283F9FF1D7DB692C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		32839FDD2905E2BC0100F93B /* GeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralView.swift; sourceTree = "<group>"; };
 		5260FE1DB3003F9F7E064F00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				2F9B1FB0283F9FF1D7DB692C /* ContentView.swift */,
 				32839FDD2905E2BC0100F93B /* GeneralView.swift */,
 				028FA7C56C0CF16021A661A4 /* NewFileView.swift */,
+				0A9A296EEF686A7C62844BE1 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				EE4598D12C181FF67167A5E5 /* GeneralView.swift in Sources */,
 				ED70B71BD6003840ABDF2682 /* NewFileView.swift in Sources */,
 				7B329151FA1DB311ACE2D1AE /* QuickActionApp.swift in Sources */,
+				0730A20581B543A622D2D7B3 /* SettingsView.swift in Sources */,
 				A6894B42C0B2C1856F0005BA /* TemplateManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

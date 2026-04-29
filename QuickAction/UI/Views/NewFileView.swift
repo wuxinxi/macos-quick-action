@@ -7,12 +7,12 @@ struct NewFileView: View {
         VStack(spacing: 0) {
             // Header Settings
             VStack(alignment: .leading, spacing: 12) {
-                Text(String(localized: "Creation Settings"))
+                Text("new_file.settings.section.title")
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundColor(.secondary)
                 
                 HStack {
-                    Toggle(String(localized: "Automated Launch"), isOn: $manager.openAfterCreate)
+                    Toggle("new_file.settings.auto_launch.label", isOn: $manager.openAfterCreate)
                         .toggleStyle(.switch)
                         .onChange(of: manager.openAfterCreate) { _ in
                             manager.saveSettings()
@@ -20,7 +20,7 @@ struct NewFileView: View {
                     
                     Spacer()
                     
-                    Text(String(localized: "Create a new file and open it after creation"))
+                    Text("new_file.settings.auto_launch.footer")
                         .font(.system(size: 11))
                         .foregroundColor(.secondary)
                 }
@@ -35,7 +35,7 @@ struct NewFileView: View {
             // Templates Grid-ish List
             ScrollView {
                 VStack(spacing: 12) {
-                    Text(String(localized: "FILE TEMPLATES"))
+                    Text("new_file.templates.section.title")
                         .font(.system(size: 14, weight: .semibold))
                         .foregroundColor(.secondary)
                         .frame(maxWidth: .infinity, alignment: .leading)

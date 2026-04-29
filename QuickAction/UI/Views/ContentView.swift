@@ -1,9 +1,10 @@
 import SwiftUI
 
 enum NavigationItem: String, CaseIterable, Identifiable {
-    case general = "General"
-    case newFile = "New File"
-    case apps = "Apps"
+    case general = "nav.tab.general"
+    case newFile = "nav.tab.new_file"
+    case apps = "nav.tab.apps"
+    case settings = "nav.tab.settings"
     
     var id: String { self.rawValue }
     
@@ -11,7 +12,8 @@ enum NavigationItem: String, CaseIterable, Identifiable {
         switch self {
         case .general: return "gearshape"
         case .newFile: return "doc.badge.plus"
-        case .apps: return "app.window.description"
+        case .apps: return "apps.ipad"
+        case .settings: return "slider.horizontal.3"
         }
     }
 }
@@ -24,12 +26,12 @@ struct ContentView: View {
         NavigationSplitView {
             List(NavigationItem.allCases, selection: $selectedItem) { item in
                 NavigationLink(value: item) {
-                    Label(String(localized: LocalizedStringResource(stringLiteral: item.rawValue)), systemImage: item.icon)
+                    Label(LocalizedStringKey(item.rawValue), systemImage: item.icon)
                         .padding(.vertical, 4)
                 }
             }
             .listStyle(.sidebar)
-            .navigationTitle(String(localized: "QuickAction"))
+            .navigationTitle(Text("QuickAction"))
             .frame(minWidth: 180)
             
             // Footer in Sidebar
@@ -38,7 +40,7 @@ struct ContentView: View {
                     Divider()
                     HStack {
                         Image(systemName: "info.circle")
-                        Text(String(localized: "App Group Active"))
+                        Text("nav.footer.status_active")
                             .font(.caption2)
                         Spacer()
                         Circle().fill(Color.green).frame(width: 6, height: 6)
@@ -52,27 +54,30 @@ struct ContentView: View {
                 if let selectedItem = selectedItem {
                     switch selectedItem {
                     case .general:
-                        GeneralView()
+                        GeneralView(manager: manager)
                     case .newFile:
                         NewFileView(manager: manager)
                     case .apps:
                         AppsPlaceholderView()
+                    case .settings:
+                        SettingsView(manager: manager)
                     }
                 } else {
-                    Text(String(localized: "Select an item to continue"))
+                    Text("Select an item to continue")
                         .foregroundColor(.secondary)
                 }
             }
-            .navigationTitle(String(localized: LocalizedStringResource(stringLiteral: selectedItem?.rawValue ?? "")))
+            .navigationTitle(selectedItem != nil ? Text(LocalizedStringKey(selectedItem!.rawValue)) : Text(""))
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: { manager.loadSettings() }) {
-                        Label(String(localized: "Sync"), systemImage: "arrow.clockwise")
+                        Label("Sync", systemImage: "arrow.clockwise")
                     }
-                    .help(String(localized: "Reload settings from disk"))
+                    .help(Text("Reload settings from disk"))
                 }
             }
         }
+        .environment(\.locale, manager.appLanguage.locale ?? Locale.current)
         .frame(minWidth: 700, minHeight: 500)
     }
 }
@@ -80,7 +85,7 @@ struct ContentView: View {
 struct AppsPlaceholderView: View {
     var body: some View {
         VStack(spacing: 20) {
-            Image(systemName: "app.window.description")
+            Image(systemName: "square.grid.2x2")
                 .font(.system(size: 60))
                 .foregroundColor(.accentColor.opacity(0.3))
             
