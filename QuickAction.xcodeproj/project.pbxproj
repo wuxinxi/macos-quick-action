@@ -11,6 +11,7 @@
 		1FC9E534462AA23FF48FEE38 /* TemplateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589DCF94CF6D12ECA2B8DF54 /* TemplateManager.swift */; };
 		2174A6D7E8B41AAAC0871A83 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 7D26D8B32A89E3F3A4671C42 /* Localizable.xcstrings */; };
 		400DA44B48691F19C3CA0D9F /* FileTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDC83FDF68C7A7E20A994FE /* FileTemplate.swift */; };
+		51E0D372EC14EFB05BA6275C /* LaunchAtLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBB1B290C70F4F3FB19B7DA /* LaunchAtLoginManager.swift */; };
 		56693641710178BE01F767C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F3D7938C1698F4F70CBD915 /* Assets.xcassets */; };
 		6D653F81070B4CB9576E5806 /* QuickActionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA88A97182B573B9E65D2303 /* QuickActionUITestsLaunchTests.swift */; };
 		790006DA2EEE7246227581FB /* FinderSyncExt.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A5914F4FECED1DEAAC540A9F /* FinderSyncExt.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -67,6 +68,7 @@
 		012108A9799F9C019BFDA3C8 /* QuickActionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickActionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		028FA7C56C0CF16021A661A4 /* NewFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFileView.swift; sourceTree = "<group>"; };
 		0A9A296EEF686A7C62844BE1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		0CBB1B290C70F4F3FB19B7DA /* LaunchAtLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLoginManager.swift; sourceTree = "<group>"; };
 		2F9B1FB0283F9FF1D7DB692C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		32839FDD2905E2BC0100F93B /* GeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralView.swift; sourceTree = "<group>"; };
 		5260FE1DB3003F9F7E064F00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		29046D989A634A4BAC086DD6 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				0CBB1B290C70F4F3FB19B7DA /* LaunchAtLoginManager.swift */,
 				589DCF94CF6D12ECA2B8DF54 /* TemplateManager.swift */,
 			);
 			name = Managers;
@@ -344,6 +347,7 @@
 				E66E633231E923C421AE3D5F /* ContentView.swift in Sources */,
 				400DA44B48691F19C3CA0D9F /* FileTemplate.swift in Sources */,
 				EE4598D12C181FF67167A5E5 /* GeneralView.swift in Sources */,
+				51E0D372EC14EFB05BA6275C /* LaunchAtLoginManager.swift in Sources */,
 				ED70B71BD6003840ABDF2682 /* NewFileView.swift in Sources */,
 				7B329151FA1DB311ACE2D1AE /* QuickActionApp.swift in Sources */,
 				0730A20581B543A622D2D7B3 /* SettingsView.swift in Sources */,
