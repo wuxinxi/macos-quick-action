@@ -4,16 +4,18 @@ enum NavigationItem: String, CaseIterable, Identifiable {
     case general = "nav.tab.general"
     case newFile = "nav.tab.new_file"
     case apps = "nav.tab.apps"
+    case advanced = "nav.tab.advanced"
     case settings = "nav.tab.settings"
-    
+
     var id: String { self.rawValue }
-    
+
     var icon: String {
         switch self {
         case .general: return "gearshape"
         case .newFile: return "doc.badge.plus"
         case .apps: return "apps.ipad"
-        case .settings: return "slider.horizontal.3"
+        case .advanced: return "slider.horizontal.3"
+        case .settings: return "wrench.and.screwdriver"
         }
     }
 }
@@ -59,6 +61,8 @@ struct ContentView: View {
                         NewFileView(manager: manager)
                     case .apps:
                         AppsPlaceholderView()
+                    case .advanced:
+                        AdvancedView(manager: manager)
                     case .settings:
                         SettingsView(manager: manager)
                     }

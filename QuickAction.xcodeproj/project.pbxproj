@@ -7,18 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02E431D793E26B6EFFBEC7C1 /* AdvancedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CA27119C76DECA72A4FDFF /* AdvancedView.swift */; };
 		0730A20581B543A622D2D7B3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9A296EEF686A7C62844BE1 /* SettingsView.swift */; };
 		1FC9E534462AA23FF48FEE38 /* TemplateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589DCF94CF6D12ECA2B8DF54 /* TemplateManager.swift */; };
 		2174A6D7E8B41AAAC0871A83 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 7D26D8B32A89E3F3A4671C42 /* Localizable.xcstrings */; };
 		400DA44B48691F19C3CA0D9F /* FileTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDC83FDF68C7A7E20A994FE /* FileTemplate.swift */; };
 		51E0D372EC14EFB05BA6275C /* LaunchAtLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBB1B290C70F4F3FB19B7DA /* LaunchAtLoginManager.swift */; };
 		56693641710178BE01F767C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F3D7938C1698F4F70CBD915 /* Assets.xcassets */; };
+		629F0573032E58E1B298BD99 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 7D26D8B32A89E3F3A4671C42 /* Localizable.xcstrings */; };
 		6D653F81070B4CB9576E5806 /* QuickActionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA88A97182B573B9E65D2303 /* QuickActionUITestsLaunchTests.swift */; };
 		790006DA2EEE7246227581FB /* FinderSyncExt.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A5914F4FECED1DEAAC540A9F /* FinderSyncExt.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7B329151FA1DB311ACE2D1AE /* QuickActionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60F3F1BF05F5A1C37328499 /* QuickActionApp.swift */; };
 		A23F47ABA3522BB85DE593DA /* FileTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDC83FDF68C7A7E20A994FE /* FileTemplate.swift */; };
 		A6894B42C0B2C1856F0005BA /* TemplateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589DCF94CF6D12ECA2B8DF54 /* TemplateManager.swift */; };
+		A9F10D47B6F4746C6893124D /* QuickActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515452E31809BF9A2BE6E0F7 /* QuickActionItem.swift */; };
 		BBC564428BF6BE52F9F3963A /* QuickActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCC97395671FD9FD85F2063 /* QuickActionTests.swift */; };
+		C3464A7AD8B3E8779A20D95A /* QuickActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515452E31809BF9A2BE6E0F7 /* QuickActionItem.swift */; };
 		D714C785D28254DB33333272 /* QuickActionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937588D11C3BC64B55116528 /* QuickActionUITests.swift */; };
 		E4A508755B547BEEA9B48E78 /* FinderSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44FECA3654A3420B5AE82B0 /* FinderSync.swift */; };
 		E66E633231E923C421AE3D5F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9B1FB0283F9FF1D7DB692C /* ContentView.swift */; };
@@ -71,6 +75,7 @@
 		0CBB1B290C70F4F3FB19B7DA /* LaunchAtLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLoginManager.swift; sourceTree = "<group>"; };
 		2F9B1FB0283F9FF1D7DB692C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		32839FDD2905E2BC0100F93B /* GeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralView.swift; sourceTree = "<group>"; };
+		515452E31809BF9A2BE6E0F7 /* QuickActionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionItem.swift; sourceTree = "<group>"; };
 		5260FE1DB3003F9F7E064F00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		535EF11A451DF500A0A9CEF2 /* FinderSyncExt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FinderSyncExt.entitlements; sourceTree = "<group>"; };
 		589DCF94CF6D12ECA2B8DF54 /* TemplateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateManager.swift; sourceTree = "<group>"; };
@@ -79,6 +84,7 @@
 		7D26D8B32A89E3F3A4671C42 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		937588D11C3BC64B55116528 /* QuickActionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionUITests.swift; sourceTree = "<group>"; };
 		94E94BA2637D36ED27426FB4 /* QuickAction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickAction.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3CA27119C76DECA72A4FDFF /* AdvancedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedView.swift; sourceTree = "<group>"; };
 		A5914F4FECED1DEAAC540A9F /* FinderSyncExt.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FinderSyncExt.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A60F3F1BF05F5A1C37328499 /* QuickActionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionApp.swift; sourceTree = "<group>"; };
 		B44FECA3654A3420B5AE82B0 /* FinderSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderSync.swift; sourceTree = "<group>"; };
@@ -103,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				CDDC83FDF68C7A7E20A994FE /* FileTemplate.swift */,
+				515452E31809BF9A2BE6E0F7 /* QuickActionItem.swift */,
 			);
 			name = Models;
 			path = QuickAction/Models;
@@ -169,6 +176,7 @@
 		D54C28E88A6667E242B088D1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A3CA27119C76DECA72A4FDFF /* AdvancedView.swift */,
 				2F9B1FB0283F9FF1D7DB692C /* ContentView.swift */,
 				32839FDD2905E2BC0100F93B /* GeneralView.swift */,
 				028FA7C56C0CF16021A661A4 /* NewFileView.swift */,
@@ -216,6 +224,7 @@
 			buildConfigurationList = 3627BB5B903A0750CB8A8E94 /* Build configuration list for PBXNativeTarget "FinderSyncExt" */;
 			buildPhases = (
 				47B095DD76579AD129853878 /* Sources */,
+				9CD2A721B87C5A01054667C5 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -319,6 +328,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9CD2A721B87C5A01054667C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				629F0573032E58E1B298BD99 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -328,6 +345,7 @@
 			files = (
 				A23F47ABA3522BB85DE593DA /* FileTemplate.swift in Sources */,
 				E4A508755B547BEEA9B48E78 /* FinderSync.swift in Sources */,
+				A9F10D47B6F4746C6893124D /* QuickActionItem.swift in Sources */,
 				1FC9E534462AA23FF48FEE38 /* TemplateManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,12 +362,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02E431D793E26B6EFFBEC7C1 /* AdvancedView.swift in Sources */,
 				E66E633231E923C421AE3D5F /* ContentView.swift in Sources */,
 				400DA44B48691F19C3CA0D9F /* FileTemplate.swift in Sources */,
 				EE4598D12C181FF67167A5E5 /* GeneralView.swift in Sources */,
 				51E0D372EC14EFB05BA6275C /* LaunchAtLoginManager.swift in Sources */,
 				ED70B71BD6003840ABDF2682 /* NewFileView.swift in Sources */,
 				7B329151FA1DB311ACE2D1AE /* QuickActionApp.swift in Sources */,
+				C3464A7AD8B3E8779A20D95A /* QuickActionItem.swift in Sources */,
 				0730A20581B543A622D2D7B3 /* SettingsView.swift in Sources */,
 				A6894B42C0B2C1856F0005BA /* TemplateManager.swift in Sources */,
 			);

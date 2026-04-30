@@ -111,13 +111,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc private func openMainWindow() {
-        // 如果 App 已在运行，直接激活并把窗口拉到最前
-        NSApp.activate(ignoringOtherApps: true)
+        // 始终保持 .accessory 模式，用 NSRunningApplication.activate 在无 Dock 图标情况下正确弹出窗口
+        NSRunningApplication.current.activate(options: [.activateIgnoringOtherApps])
 
-        if let window = NSApp.windows.first(where: { !$0.isMiniaturized }) {
+        if let window = NSApp.windows.first(where: { $0.styleMask.contains(.titled) }) {
             window.makeKeyAndOrderFront(nil)
-        } else {
-            NSApp.windows.first?.makeKeyAndOrderFront(nil)
         }
     }
 
@@ -168,7 +166,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 // MARK: - NSWindowDelegate（拦截关闭按钮，改为隐藏）
 extension AppDelegate: NSWindowDelegate {
     func windowShouldClose(_ sender: NSWindow) -> Bool {
-        // 隐藏窗口而不是真正关闭，让 App 进程和状态栏图标继续存活
+        // 隐藏窗口但始终保持 .accessory 模式，状态栏图标保留且 Dock 图标永远不出现
         sender.orderOut(nil)
         return false
     }

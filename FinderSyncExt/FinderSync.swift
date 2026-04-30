@@ -13,23 +13,36 @@ class FinderSync: FIFinderSync {
 
     override func menu(for menuKind: FIMenuKind) -> NSMenu {
         let menu = NSMenu(title: "")
-        
-        let copyPathItem = NSMenuItem(title: NSLocalizedString("Copy Path", comment: ""), action: #selector(copyPathAction(_:)), keyEquivalent: "")
-        copyPathItem.image = menuSymbol("doc.on.doc")
-        menu.addItem(copyPathItem)
-        
-        let terminalItem = NSMenuItem(title: NSLocalizedString("Open Terminal Here", comment: ""), action: #selector(openTerminalAction(_:)), keyEquivalent: "")
-        terminalItem.image = menuSymbol("terminal")
-        menu.addItem(terminalItem)
-        
-        let sublimeItem = NSMenuItem(title: NSLocalizedString("Open with Sublime Text", comment: ""), action: #selector(openWithSublimeAction(_:)), keyEquivalent: "")
-        sublimeItem.image = menuSymbol("curlybraces")
-        menu.addItem(sublimeItem)
-        
-        menu.addItem(NSMenuItem.separator())
-        
-        // Dynamic "New File" Sub-menu
+
+        // 从 App Group 读取启用的快捷操作（与主 App 共享状态）
         let manager = TemplateManager()
+        let enabledActions = manager.quickActions.filter { $0.isEnabled && $0.isAppInstalled }
+
+        for action in enabledActions {
+            // 直接映射到对应的 @IBAction，与 newFileAction 方式完全一致
+            let selector: Selector
+            switch action.id {
+            case "copy_path":    selector = #selector(copyPathAction(_:))
+            case "open_terminal": selector = #selector(openTerminalAction(_:))
+            case "open_sublime":  selector = #selector(openWithSublimeAction(_:))
+            case "open_iterm2":   selector = #selector(openITerm2Action(_:))
+            default: continue
+            }
+
+            let item = NSMenuItem(
+                title: action.localizedName,
+                action: selector,
+                keyEquivalent: ""
+            )
+            item.image = menuSymbol(action.iconName)
+            menu.addItem(item)
+        }
+
+        if !enabledActions.isEmpty {
+            menu.addItem(NSMenuItem.separator())
+        }
+
+        // Dynamic "New File" Sub-menu
         let enabledTemplates = manager.templates.filter { $0.isEnabled }
 
         if !enabledTemplates.isEmpty {
@@ -67,11 +80,11 @@ class FinderSync: FIFinderSync {
     }
 
     // MARK: - Actions
-    
+
     @IBAction func copyPathAction(_ sender: AnyObject?) {
         guard let items = FIFinderSyncController.default().selectedItemURLs(), !items.isEmpty else { return }
         let paths = items.map { $0.path }.joined(separator: "\n")
-        
+
         let pasteboard = NSPasteboard.general
         pasteboard.clearContents()
         pasteboard.setString(paths, forType: .string)
@@ -189,6 +202,42 @@ class FinderSync: FIFinderSync {
             try "".write(to: fileURL, atomically: true, encoding: .utf8)
             NSWorkspace.shared.activateFileViewerSelecting([fileURL])
         } catch { }
+    }
+
+    @IBAction func openITerm2Action(_ sender: AnyObject?) {
+        var targetURL: URL?
+
+        if let items = FIFinderSyncController.default().selectedItemURLs(), let first = items.first {
+            var isDir: ObjCBool = false
+            if FileManager.default.fileExists(atPath: first.path, isDirectory: &isDir), isDir.boolValue {
+                targetURL = first
+            } else {
+                targetURL = first.deletingLastPathComponent()
+            }
+        } else {
+            targetURL = FIFinderSyncController.default().targetedURL()
+        }
+
+        guard let finalURL = targetURL else { return }
+
+        let escapedPath = finalURL.path.replacingOccurrences(of: "\\", with: "\\\\")
+                                       .replacingOccurrences(of: "\"", with: "\\\"")
+        let scriptSource = """
+        tell application "iTerm2"
+            activate
+            tell current window
+                create tab with default profile
+                tell current session
+                    write text "cd \\"\(escapedPath)\\""
+                end tell
+            end tell
+        end tell
+        """
+
+        var errorDict: NSDictionary?
+        if let script = NSAppleScript(source: scriptSource) {
+            script.executeAndReturnError(&errorDict)
+        }
     }
 }
 

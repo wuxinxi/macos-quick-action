@@ -19,12 +19,14 @@ enum AppLanguage: String, CaseIterable, Identifiable {
 
 class TemplateManager: ObservableObject {
     @Published var templates: [FileTemplate] = []
+    @Published var quickActions: [QuickActionItem] = []
     @Published var openAfterCreate: Bool = false
     @Published var appLanguage: AppLanguage = .system
     @Published var authorizedDirectoryPath: String?
     
     private let sharedDefaults: UserDefaults?
     static let storageKey = "configured_templates"
+    static let quickActionsKey = "configured_quick_actions"
     static let openAfterCreateKey = "open_after_create"
     static let languageKey = "app_language_preference"
     static let authorizedDirectoryBookmarkKey = "authorized_directory_bookmark"
@@ -45,6 +47,14 @@ class TemplateManager: ObservableObject {
         FileTemplate(nameKey: "Word", extensionName: "docx", isEnabled: false, iconName: "doc.richtext"),
         FileTemplate(nameKey: "Excel", extensionName: "xlsx", isEnabled: false, iconName: "tablecells"),
     ]
+
+    /// 快捷操作默认配置（首次启动时使用）
+    static let defaultQuickActions: [QuickActionItem] = [
+        QuickActionItem(id: "copy_path",    nameKey: "action.copy_path",    iconName: "doc.on.doc",    isEnabled: true,  appBundleIDs: nil),
+        QuickActionItem(id: "open_terminal", nameKey: "action.open_terminal", iconName: "terminal",       isEnabled: true,  appBundleIDs: nil),
+        QuickActionItem(id: "open_sublime",  nameKey: "action.open_sublime",  iconName: "curlybraces",   isEnabled: true,  appBundleIDs: ["com.sublimetext.4", "com.sublimetext.3"]),
+        QuickActionItem(id: "open_iterm2",   nameKey: "action.open_iterm2",   iconName: "apple.terminal", isEnabled: false, appBundleIDs: ["com.googlecode.iterm2"]),
+    ]
     
     init() {
         // Fallback to standard if App Group is not available to prevent crashes
@@ -64,9 +74,16 @@ class TemplateManager: ObservableObject {
         } else {
             self.templates = Self.defaultTemplates
         }
-        
+
+        if let data = sharedDefaults?.data(forKey: Self.quickActionsKey),
+           let decoded = try? JSONDecoder().decode([QuickActionItem].self, from: data) {
+            self.quickActions = decoded
+        } else {
+            self.quickActions = Self.defaultQuickActions
+        }
+
         self.openAfterCreate = sharedDefaults?.bool(forKey: Self.openAfterCreateKey) ?? false
-        
+
         if let langStr = sharedDefaults?.string(forKey: Self.languageKey),
            let lang = AppLanguage(rawValue: langStr) {
             self.appLanguage = lang
@@ -79,8 +96,18 @@ class TemplateManager: ObservableObject {
         if let encoded = try? JSONEncoder().encode(templates) {
             sharedDefaults?.set(encoded, forKey: Self.storageKey)
         }
+        if let encoded = try? JSONEncoder().encode(quickActions) {
+            sharedDefaults?.set(encoded, forKey: Self.quickActionsKey)
+        }
         sharedDefaults?.set(openAfterCreate, forKey: Self.openAfterCreateKey)
         sharedDefaults?.set(appLanguage.rawValue, forKey: Self.languageKey)
+    }
+
+    /// 切换某个快捷操作的启用状态并立即持久化
+    func setQuickActionEnabled(id: String, enabled: Bool) {
+        guard let index = quickActions.firstIndex(where: { $0.id == id }) else { return }
+        quickActions[index].isEnabled = enabled
+        saveSettings()
     }
 
     var hasAuthorizedDirectory: Bool {

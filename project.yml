@@ -31,7 +31,9 @@ targets:
     sources:
       - path: FinderSyncExt
       - path: QuickAction/Models/FileTemplate.swift
+      - path: QuickAction/Models/QuickActionItem.swift
       - path: QuickAction/Managers/TemplateManager.swift
+      - path: QuickAction/Localizable.xcstrings
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: cn.xxstudy.QuickAction.FinderSyncExt
