@@ -26,7 +26,7 @@ class TemplateManager: ObservableObject {
     
     private let sharedDefaults: UserDefaults?
     static let storageKey = "configured_templates"
-    static let quickActionsKey = "configured_quick_actions"
+    static let quickActionsKey = "new_configured_quick_actions"
     static let openAfterCreateKey = "open_after_create"
     static let languageKey = "app_language_preference"
     static let authorizedDirectoryBookmarkKey = "authorized_directory_bookmark"
