@@ -139,7 +139,7 @@ private struct PermissionBadge: View {
     let isAuthorized: Bool
 
     var body: some View {
-        ZStack(alignment: .bottomTrailing) {
+        ZStack {
             RoundedRectangle(cornerRadius: 11)
                 .fill(isAuthorized ? Color.green.opacity(0.16) : Color.orange.opacity(0.16))
                 .frame(width: 46, height: 46)
@@ -147,7 +147,6 @@ private struct PermissionBadge: View {
             Image(systemName: isAuthorized ? "lock.open.fill" : "lock.fill")
                 .font(.system(size: 18, weight: .semibold))
                 .foregroundColor(isAuthorized ? Color.green : Color.orange)
-                .offset(x: -2, y: -2)
         }
         .padding(.leading, 2)
     }
