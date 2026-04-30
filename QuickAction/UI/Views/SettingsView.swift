@@ -1,9 +1,11 @@
 import SwiftUI
+import ServiceManagement
 
 struct SettingsView: View {
     @ObservedObject var manager: TemplateManager
+    @StateObject private var launchAtLogin = LaunchAtLoginManager.shared
 
-    
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 25) {
@@ -52,6 +54,47 @@ struct SettingsView: View {
                     .background(Color(NSColor.controlBackgroundColor).opacity(0.5))
                     .cornerRadius(18)
                     .overlay(RoundedRectangle(cornerRadius: 18).stroke(Color.primary.opacity(0.08), lineWidth: 0.8))
+                }
+                .frame(maxWidth: 550)
+                // General Section
+                VStack(alignment: .leading, spacing: 15) {
+                    Text("settings.general.section.title")
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundColor(.secondary)
+                        .padding(.leading, 5)
+
+                    HStack(spacing: 14) {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(Color.accentColor.opacity(0.12))
+                                .frame(width: 36, height: 36)
+                            Image(systemName: "bolt.fill")
+                                .font(.system(size: 16, weight: .semibold))
+                                .foregroundColor(.accentColor)
+                        }
+
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("settings.general.launch_at_login.label")
+                                .font(.system(size: 13, weight: .medium))
+                            Text("settings.general.launch_at_login.footer")
+                                .font(.system(size: 11))
+                                .foregroundColor(.secondary)
+                        }
+
+                        Spacer()
+
+                        Toggle("", isOn: Binding(
+                            get: { launchAtLogin.isEnabled },
+                            set: { _ in launchAtLogin.toggle() }
+                        ))
+                        .toggleStyle(.switch)
+                        .labelsHidden()
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 12)
+                    .background(Color(NSColor.controlBackgroundColor).opacity(0.5))
+                    .cornerRadius(10)
+                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.primary.opacity(0.1), lineWidth: 0.5))
                 }
                 .frame(maxWidth: 550)
 

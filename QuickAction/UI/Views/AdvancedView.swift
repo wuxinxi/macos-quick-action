@@ -6,29 +6,13 @@
 //
 
 import SwiftUI
-import ServiceManagement
 
 struct AdvancedView: View {
     @ObservedObject var manager: TemplateManager
-    @StateObject private var launchAtLogin = LaunchAtLoginManager.shared
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 25) {
-
-                // MARK: - Startup Section
-                SectionBlock(title: "advanced.section.startup") {
-                    AdvancedToggleRow(
-                        icon: "bolt.fill",
-                        iconColor: .accentColor,
-                        label: "settings.general.launch_at_login.label",
-                        footer: "settings.general.launch_at_login.footer",
-                        isOn: Binding(
-                            get: { launchAtLogin.isEnabled },
-                            set: { _ in launchAtLogin.toggle() }
-                        )
-                    )
-                }
 
                 // MARK: - Quick Actions Section
                 SectionBlock(title: "advanced.section.quick_actions") {
@@ -42,7 +26,7 @@ struct AdvancedView: View {
                 }
 
             }
-            .padding(40)
+            .padding(20)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
